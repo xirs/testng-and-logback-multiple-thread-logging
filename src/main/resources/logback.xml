@@ -1,0 +1,30 @@
+<configuration debug="true" scan="false" scanPeriod="30 seconds">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyyMMdd'-'HHmmss.SSS} [%X{class_reqid}-%X{case_reqid}] [%thread] %-4level %15.-15logger{5}:%-4line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>log/fayaa.log</file>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyyMMdd'-'HHmmss.SSS} [%X{class_reqid}-%X{case_reqid}] [%thread] %-4level %15.-15logger{5}:%-4line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="GroupedLogAppender" class="com.fayaa.logging.GroupedLoggingAppender">
+        <file>log/fayaa.threadgroup.log</file>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyyMMdd'-'HHmmss.SSS} [%X{class_reqid}-%X{case_reqid}] [%thread] %-4level %15.-15logger{5}:%-4line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.fayaa.logging" level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="GroupedLogAppender"/>
+    </logger>
+
+</configuration>

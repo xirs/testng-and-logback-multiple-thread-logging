@@ -1,14 +1,22 @@
-package com.fayaa.tt;
+package com.fayaa.logging;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
-import org.apache.log4j.Logger;
 
 public class LoggingTest {
-    private Logger logger = Logger.getLogger(LoggingTest.class);
+    private Logger logger = LoggerFactory.getLogger(LoggingTest.class);
 
     @BeforeClass
-    public void init() {
-        //System.out.println(System.getProperty("outputdir"));
+    public void initLoggingTest() {
+        System.out.println(System.getProperty("outputdir"));
+        logger.info("initLoggingTest from thread " + Thread.currentThread().getId());
+    }
+
+    @AfterClass
+    public void cleanupLoggingTest() {
+        System.out.println(System.getProperty("outputdir"));
+        logger.info("cleanupLoggingTest from thread " + Thread.currentThread().getId());
     }
 
     @Test (invocationCount=100, threadPoolSize=10)

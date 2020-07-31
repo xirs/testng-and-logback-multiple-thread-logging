@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="fayaa" configfailurepolicy="continue">
+
+    <test name="fayaa" preserve-order="true">
+        <classes>
+            <class name = "com.fayaa.logging.LoggingTest"/>
+        </classes>
+    </test>
+    
+    <listeners>
+        <listener class-name="com.fayaa.logging.GroupedLoggingAppender"/>
+    </listeners>
+
+
+</suite>

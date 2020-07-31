@@ -17,9 +17,9 @@
             <version>6.1.1</version>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
     <build>
@@ -34,15 +34,18 @@
                     </systemPropertyVariables>
                     <properties>
                         <property>
-                            <!--
-                                 <name>reporter</name>
-                                 Yes, use listener in surefire instead of "reporter"
-                                 See: http://stackoverflow.com/questions/11835790/using-custom-reporters-with-the-maven-surefire-plugin/11837438#11837438
-                             -->
                             <name>listener</name>
                             <value>com.fayaa.logging.GroupedLoggingAppender</value>
                         </property>
                     </properties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
                 </configuration>
             </plugin>
         </plugins>
